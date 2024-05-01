@@ -18,58 +18,6 @@ jobs:
         run: |
           echo ${{ github.event.repository.name }}
 
-        # Find and replace variables
-      - name: Parse project to fit CodeDeploy __SERVICE_NAME__
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "__SERVICE_NAME__"
-          replace: ${{ github.event.repository.name }}
-          regex: false
-          exclude: ".github/workflows/**" # Do not modify GitHub Actions files
-      - name: Parse project to fit CodeDeploy __SERVICE_PORT__
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "__SERVICE_PORT__"
-          replace: ${{ secrets.__SERVICE_PORT__ }}
-          regex: false
-          exclude: ".github/workflows/**" # Do not modify GitHub Actions files
-      - name: Parse project to fit CodeDeploy __LOG_DIR__
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "__LOG_DIR__"
-          replace: ${{ secrets.__LOG_DIR__ }}
-          regex: false
-          exclude: ".github/workflows/**" # Do not modify GitHub Actions files
-      - name: Parse project to fit CodeDeploy __DEPLOY_LOG__
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "__DEPLOY_LOG__"
-          replace: ${{ secrets.__DEPLOY_LOG__ }}
-          regex: false
-          exclude: ".github/workflows/**" # Do not modify GitHub Actions files
-      - name: Parse project to fit CodeDeploy __DEPLOY_DIR__
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "__DEPLOY_DIR__"
-          replace: ${{ secrets.__DEPLOY_DIR__ }}
-          regex: false
-          exclude: ".github/workflows/**" # Do not modify GitHub Actions files
-      - name: Parse project to fit CodeDeploy __JAVA_VERSION__
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "__JAVA_VERSION__"
-          replace: ${{ secrets.__JAVA_VERSION__ }}
-          regex: false
-          exclude: ".github/workflows/**" # Do not modify GitHub Actions files
-
-      # Setup Java AMZ to cache Sonar scanner
-      - name: Set up JDK 
-        uses: actions/setup-java@v4
-        with:
-          distribution: "corretto"
-          java-version: "${{ secrets.__JAVA_VERSION__ }}"
-          cache: maven
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:

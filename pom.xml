@@ -9,10 +9,10 @@
 		<version>3.2.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<artifactId>card-service</artifactId>
+	<artifactId>account-service</artifactId>
 	<properties>
 		<java.version>21</java.version>
-		<service.name>card-service</service.name>
+		<service.name>account-service</service.name>
 		<service.port>80</service.port>
 		<log.dir>logs</log.dir>
 		<sonar.sources>src/main/java</sonar.sources>
@@ -24,7 +24,7 @@
 		<service.profile>dev</service.profile>
 	</properties>
 	<groupId>xyz.solidnetwork</groupId>
-	<version>1.3</version>
+	<version>1.0</version>
 	<name>${service.name}</name>
 	<description>${service.name}</description>
 	<packaging>jar</packaging>
