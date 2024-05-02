@@ -14,12 +14,12 @@
 
 # build
 ````
-docker build -t "solidnetworkxyz/account-service:1.0" .
+docker build -t "solidnetworkxyz/account-service:1.1" .
 ````
 
 # run
 ````
-docker run --rm -it -p 80:80 solidnetworkxyz/account-service:1.0
+docker run --rm -it -p 80:80 solidnetworkxyz/account-service:1.1
 ````
 # login
 ````
@@ -28,6 +28,6 @@ docker login -u solidnetworkxyz
 
 # push
 ````
-docker push solidnetworkxyz/account-service:1.0
+docker push solidnetworkxyz/account-service:1.1
 ````
 

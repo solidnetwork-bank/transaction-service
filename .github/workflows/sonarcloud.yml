@@ -18,14 +18,22 @@ jobs:
         run: |
           echo ${{ github.event.repository.name }}
 
+      # Setup Java AMZ to cache Sonar scanner
+      - name: Set up JDK 
+        uses: actions/setup-java@v4
+        with:
+          distribution: "corretto"
+          java-version: "21"
+          cache: maven
+
       - name: Cache SonarCloud packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Cache Maven packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -35,4 +43,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=solidnetwork-bank_${{ github.event.repository.name }}
+        run: >
+            mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar 
+            -Dsonar.organization=solidnetwork-bank 
+            -Dsonar.projectKey=solidnetwork-bank_${{ github.event.repository.name }} 
+            -Dsonar.coverage.jacoco.xmlReportPaths=./target/site/jacoco/jacoco.xml
+            -Dsonar.sources=src/main/java 
+            -Dsonar.exclusions=**/test/**
+            -Dsonar.language=java 
+            -Dsonar.tests=src/test/java
+            -Dsonar.host.url=https://sonarcloud.io

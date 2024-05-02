@@ -15,16 +15,12 @@
 		<service.name>account-service</service.name>
 		<service.port>80</service.port>
 		<log.dir>logs</log.dir>
-		<sonar.sources>src/main/java</sonar.sources>
-		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-		<sonar.organization>solidnetwork-bank</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<log.time.zone>America/New_York</log.time.zone>
 		<log.date.pat>ISO8601</log.date.pat>
 		<service.profile>dev</service.profile>
 	</properties>
 	<groupId>xyz.solidnetwork</groupId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<name>${service.name}</name>
 	<description>${service.name}</description>
 	<packaging>jar</packaging>
