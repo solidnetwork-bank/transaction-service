@@ -12,9 +12,9 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @PostMapping("/private/transaction")
+    @PostMapping("/transaction")
     public Report getTransaction() {
-        log.info("PRIVATE transaction is requested");
+        log.info("transaction is requested");
         return transactionService.getreport();
     }
 }
