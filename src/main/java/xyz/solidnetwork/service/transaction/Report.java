@@ -8,12 +8,8 @@ public class Report {
     private List<Transaction> withdrawals;
     private List<Transaction> fees;
 
-    public Report(String account, List<Transaction> deposits, List<Transaction> withdrawals,
-            List<Transaction> fees) {
-        this.account = account;
-        this.deposits = deposits;
-        this.withdrawals = withdrawals;
-        this.fees = fees;
+    public Report() {
+        super();
     }
 
     public String getAccount() {
@@ -46,6 +42,24 @@ public class Report {
 
     public void setFees(List<Transaction> fees) {
         this.fees = fees;
+    }
+
+    @Override
+    public String toString() {
+        return "Report [account=" + account + ", deposits=" + toString(deposits) + ", withdrawals="
+                + toString(withdrawals) + ", fees="
+                + toString(fees) + "]";
+    }
+
+    private String toString(List<Transaction> list) {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("[");
+        for (Transaction transaction : list) {
+            stringBuffer.append(transaction.toString());
+            stringBuffer.append(", ");
+        }
+        stringBuffer.append("]");
+        return stringBuffer.toString();
     }
 
 }

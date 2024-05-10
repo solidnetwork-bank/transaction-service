@@ -8,11 +8,8 @@ public class Transaction {
     private String desc;
     private Double amount;
 
-    public Transaction(String id, LocalDate date, String desc, Double amount) {
-        this.id = id;
-        this.date = date;
-        this.desc = desc;
-        this.amount = amount;
+    public Transaction() {
+        super();
     }
 
     public String getId() {
